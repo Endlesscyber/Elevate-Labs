@@ -10,9 +10,19 @@ To analyze a suspicious email sample and identify phishing characteristics from 
 
 The analyzed email claimed to be from **"Express Pharmacy"** and offered discounted medications (Viagra, Cialis, etc.), urging the recipient to click a link or respond via email. It was sent from a **Hotmail address** with a display name containing product prices, targeting unsuspecting recipients.
 
+
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/a63b0439064849db9117f1bd2dd24fdfc2563434/Task%202/Images/sample%20phising%20mail.png">
+
+
+### Tool Usel: EML Analyzer
+
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/EML%20Analyzer.png">
+
+
 ### Email Rendered View
 
-![Email Screenshot](email_screenshot.png)
+### Headers
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/Headers.png">
 
 ---
 
@@ -28,6 +38,7 @@ The analyzed email claimed to be from **"Express Pharmacy"** and offered discoun
 | **X-Mailer**  | Microsoft Outlook 16.0 |
 
 ---
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/basic%20header.png">
 
 ## Phishing Indicators Identified
 
@@ -40,12 +51,14 @@ The analyzed email claimed to be from **"Express Pharmacy"** and offered discoun
 
 The email header analysis revealed critical authentication failures:
 
-![Header Analysis](header_analysis.png)
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/security%20header.png">
 
 - **SPF: FAIL** — Sender IP `49.43.4.43` is not authorized to send mail for `hotmail.com`.
 - **DKIM: None** — The message was **not signed**, meaning authenticity cannot be verified.
 - **DMARC: FAIL** — Combined authentication check failed (`compauth=fail, reason=001`).
 - **Return-Path** mismatches the displayed sender identity.
+
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/virus%20total.png">
 
 ### 3. Urgent / Manipulative Language
 
@@ -55,13 +68,13 @@ The email header analysis revealed critical authentication failures:
 
 ### 4. Suspicious Links
 
-![Links Analysis](links_analysis.png)
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/links_analysis.png">
 
 The email contains three deceptive links:
 
 | Display Text | Actual Destination | Risk |
 |---|---|---|
-| `Visit website` | `http://salpor.com/f.html` | ⚠️ Unrelated domain — possible malware/redirect |
+| `Visit website` | `http://salpor.com/f.html` |  Unrelated domain — possible malware/redirect |
 | `Yes, I want a 5-10% discount` | `mailto:ex.pharmacy.online@gmail.com` | Collects responses on Gmail account |
 | `No, I don't need Viagra/Cialis` | `mailto:ex.pharmacy.online5@gmail.com` | Confirms active email address to spammers |
 
@@ -73,6 +86,10 @@ The email contains three deceptive links:
 - This email contains no direct attachment, but the link `http://salpor.com/f.html` is a redirect URL.
 - Such redirect URLs are commonly used to serve **malware, fake login pages**, or **drive-by downloads**.
 
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/38a2ffdfbc23378bd75226cdae5a22551aca00db/Task%202/Images/web%20view.png">
+
+
+<img src="https://github.com/Endlesscyber/Elevate-Labs/blob/aa6454ca80402a4b21b5c583474e4df515dadfc6/Task%202/Images/web%20view%202.png">
 ### 6. Generic Greeting
 
 - The email opens with **"Hello Valued Customer"** — a generic salutation with no personalization.
@@ -109,7 +126,7 @@ Based on these indicators, this email is **confirmed to be a phishing/spam attem
 
 ## Recommendation
 
-> ⚠️ Take the following actions if you receive a similar email:
+>  Take the following actions if you receive a similar email:
 
 - **Do not** click any links, especially `http://salpor.com/f.html`.
 - **Do not** reply to any mailto links — even "No" confirms your email is active.
